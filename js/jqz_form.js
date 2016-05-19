@@ -97,12 +97,14 @@
 					if (_obj.hasClass(cid)) {
 						var value = _obj.val();
 						if (inid && value != $(inid).val()) {
-							return falsefun(_obj);
+							falsefun(_obj);
+							return false;
 						} else if (value == '' || !value.match(reg)) {
 							return falsefun(_obj);
 						} else {
 							if (_obj.hasClass('false'))
-								return truefun(_obj);
+								truefun(_obj);
+							return true;
 						} //value
 					} //1、again.val()，2、reg,3、true
 				} //for
@@ -114,9 +116,11 @@
 					value++;
 				});
 				if (value < min) {
-					return falsefun(_obj);
+					falsefun(_obj);
+					return false;
 				} else {
-					return truefun(_obj);
+					truefun(_obj);
+					return true;
 				}
 			}
 			/**--trigger fun--**/
@@ -133,17 +137,15 @@
 					var returnV = 0;
 					var _obj = $(obj).find(".myform");
 					for (var i = 0; i < _obj.size(); i++) {
-
-						var bool = inputfun(_obj.eq(i), arrayReg);
-						if (_obj.eq(i).hasClass('mycheck')) checkedfun(_obj.eq(i));
-
-						if (loop && !bool) return false;
+						
+						var bool = (_obj.eq(i).hasClass('mycheck')) ?  checkedfun(_obj.eq(i)):inputfun(_obj.eq(i), arrayReg) ;
 						if (bool) returnV++;
+						if (!loop && !bool)return false;	
 					}
-					if (returnV < _obj.size()) {
-						return false;
-					} else {
+					if (returnV >= _obj.size()) {
 						return true;
+					} else {
+						return false;
 					}
 
 				} //递交事件(form,循环)
