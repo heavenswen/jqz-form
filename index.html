@@ -118,7 +118,7 @@
 		<script src="lib/zepto.1.6.min.js"></script>
 		<!--zepto-->
 		<!--<script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script><!--jq-->
-		<script type="text/javascript" src="js/qiu.form.min.js"></script>
+		<script type="text/javascript" src="js/jqz_form.js"></script>
 		<script>
 			var htm = "<div id='myts' style='width:180px; min-height:40px;padding-top:10px'></div>";
 			$("body").append(htm); //生成提示层
@@ -167,7 +167,8 @@
 				if (f) $('#form').submit(); //button type='button' f == true 则提交。  
 			})
 			$(".mysub").click(function() {
-					var f = form.formSub('.myform', true);
+					var f = form.formSub('.myform');
+					console.log(f);
 					return f; //利用return false阻止提交
 				}) //formSub()会返回input个bool；
 		</script>

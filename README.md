@@ -1,8 +1,11 @@
-# qiuform
+# jqz_form
 
+*待修改*
 <p>2014-05-18</p>
 
 <h4>基于jQuery，zepto框架,使用正则来验证表单，包含了常用的验证，包括seleact和checkbox多选项验证，自定义提示，可添加新规则等</h4>
+
+
 
 初始化：new $.myform(自定义data)
  * trggier:input的触发

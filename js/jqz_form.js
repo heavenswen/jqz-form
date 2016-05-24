@@ -49,7 +49,7 @@
 			});
 			arrayReg.push({
 				"cid": "day",
-				"reg": /^\d+[-|\/]\d{1,2}[-|\/]\d{1,2}/
+				"reg": /^\d+[.|-|\/]\d{1,2}[.|-|\/]\d{1,2}/
 			});
 			arrayReg.push({
 				"cid": "area",
@@ -87,7 +87,7 @@
 				_obj.removeClass('false');
 				return true;
 			}
-
+		//用data-定位，jq.inArray()来验证
 			function inputfun(_obj, array) {
 				var length = array.length;
 				for (var i = 0; i < length; i++) {
@@ -100,7 +100,8 @@
 							falsefun(_obj);
 							return false;
 						} else if (value == '' || !value.match(reg)) {
-							return falsefun(_obj);
+							falsefun(_obj)
+							return false;
 						} else {
 							if (_obj.hasClass('false'))
 								truefun(_obj);
@@ -136,9 +137,10 @@
 			this.formSub = function(obj, loop) {
 					var returnV = 0;
 					var _obj = $(obj).find(".myform");
-					for (var i = 0; i < _obj.size(); i++) {
+					for (i in _obj) {
 						
 						var bool = (_obj.eq(i).hasClass('mycheck')) ?  checkedfun(_obj.eq(i)):inputfun(_obj.eq(i), arrayReg) ;
+						console.log(i+':'+bool)
 						if (bool) returnV++;
 						if (!loop && !bool)return false;	
 					}
